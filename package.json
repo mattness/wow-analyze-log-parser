@@ -1,0 +1,19 @@
+{
+  "author": "Matt Gollob <mattgollob+github@gmail.com>",
+  "name": "log-parser",
+  "description": "Combat log parser for World of Warcraft",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wow-analyze/log-parser"
+  },
+  "main": "log-parser.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "license": "MIT"
+}
