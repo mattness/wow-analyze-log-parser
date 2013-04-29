@@ -22,6 +22,7 @@
 module.exports = Parser;
 
 var Transform = require('stream').Transform;
+var LogEntry = require('./logEntry');
 var util = require('util');
 util.inherits(Parser, Transform);
 Parser.prototype._transform = _transform;
@@ -55,7 +56,7 @@ function _flush(done) {
 }
 
 function _parse(record) {
-  this.emit('record', record);
+  this.emit('record', LogEntry.create(record.split(',')));
 }
 
 function Parser() {
@@ -64,5 +65,4 @@ function Parser() {
 
   Transform.call(this);
   this.buffer = '';
-  return this;
 }
