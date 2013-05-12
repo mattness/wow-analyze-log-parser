@@ -196,11 +196,29 @@ function _parseUnitFlags(flags) {
 }
 
 function _parseRaidFlags(flags) {
-  var parsed = { raw: flags };
+  if (isNaN(flags)) return { raw: flags };
+
+  var num = parseInt(flags);
+
+  var parsed = {
+    raw: flags,
+    raidTarget: {
+      yellowStar: testFlag(num, 0x01),
+      orangeCircle: testFlag(num, 0x02),
+      purpleDiamond: testFlag(num, 0x04),
+      greenTriangle: testFlag(num, 0x08),
+      paleBlueMoon: testFlag(num, 0x10),
+      blueSquare: testFlag(num, 0x20),
+      redCross: testFlag(num, 0x40),
+      whiteSkull: testFlag(num, 0x80)
+    }
+  };
   return parsed;
 }
 
 function testFlag(num, flag) {
+  if(isNaN(num) || isNaN(flag)) return false;
+
   return (num & flag) === flag;
 }
 

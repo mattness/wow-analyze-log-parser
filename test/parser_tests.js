@@ -112,6 +112,47 @@ tap.test('records have correct source flags', function(t) {
     t.ok(reactionType.friendly, 'reactionType should be friendly');
     t.notOk(reactionType.hostile, 'reactionType should not be hostile');
     t.notOk(reactionType.neutral, 'reactionType should not be neutral');
+
+    for (var key in r.source.flags.affiliation) {
+      if (r.source.flags.affiliation.hasOwnProperty(key)) {
+        var val = r.source.flags.affiliation[key];
+        if (key === 'raid') t.ok(val, 'affiliation should be raid');
+        else t.notOk(val, 'affiliation should not be ' + key);
+      }
+    }
+
+    for (var key in r.source.flags.special) {
+      if (r.source.flags.special.hasOwnProperty(key)) {
+        t.notOk(r.source.flags.special[key], 'special should not be ' + key);
+      }
+    }
+
+    t.end();
+  });
+
+  new stream.PassThrough().pipe(p).end(data);
+});
+
+tap.test('records have correct source raid flags', function(t) {
+  var p = new Parser();
+
+  p.on('readable', p.read);
+  p.on('record', function(r) {
+    for (var key in r.source.raidFlags.raidTarget) {
+      if (r.source.raidFlags.raidTarget.hasOwnProperty(key)) {
+        t.notOk(r.source.raidFlags.raidTarget[key],
+          'raidTarget should not be ' + key);
+      }
+    }
+
+    var controllerType = r.source.flags.controllerType;
+    t.ok(controllerType.player, 'controllerType should be player');
+    t.notOk(controllerType.npc, 'controllerType should not be npc');
+
+    var reactionType = r.source.flags.reactionType;
+    t.ok(reactionType.friendly, 'reactionType should be friendly');
+    t.notOk(reactionType.hostile, 'reactionType should not be hostile');
+    t.notOk(reactionType.neutral, 'reactionType should not be neutral');
     t.end();
 
     for (var key in r.source.flags.affiliation) {
