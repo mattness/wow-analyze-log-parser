@@ -24,6 +24,8 @@ module.exports = {
 };
 
 var eventRegex = /^(\d{1,2})\/(\d{1,2})\s(\d+):(\d+):(\d+)\.(\d+)\s{2}(\w+)$/;
+var prefixParsers = require('./prefixParsers');
+var suffixParsers = require('./suffixParsers');
 var util = require('./util');
 
 // Prefixes and suffixes are semi-sorted so that the most common events are
@@ -71,16 +73,19 @@ var eventSuffixes = [
   'RESURRECT'
 ];
 
+var specials = [
+  'DAMAGE_SHIELD',
+  'DAMAGE_SHIELD_MISSED',
+  'DAMAGE_SPLIT'
+];
+
 function createLogEntry(fields) {
-  var prefixParse = function() {};
-  var suffixParse = function() {};
+  var noop = function() { };
   var logEntry = {};
 
   _baseParse.call(logEntry, fields);
-
-  // TODO (mattness): Map prefix and suffix to the appropriate parser fn
-  prefixParse.call(logEntry, fields);
-  suffixParse.call(logEntry, fields);
+  (prefixParsers[logEntry.eventPrefix] || noop).call(logEntry, fields);
+  (suffixParsers[logEntry.eventSuffix] || noop).call(logEntry, fields);
 
   return logEntry;
 };
@@ -119,12 +124,6 @@ function _parseEvent(eventStr) {
 }
 
 function _getPrefix(eventStr) {
-  var specials = [
-    'DAMAGE_SHIELD',
-    'DAMAGE_SHIELD_MISSED',
-    'DAMAGE_SPLIT'
-  ];
-
   // If the eventStr matches one of the specials, we need to map it
   if (specials.indexOf(eventStr) !== -1) return 'SPELL';
 
@@ -137,12 +136,6 @@ function _getPrefix(eventStr) {
 }
 
 function _getSuffix(eventStr) {
-  var specials = [
-    'DAMAGE_SHIELD',
-    'DAMAGE_SHIELD_MISSED',
-    'DAMAGE_SPLIT'
-  ];
-
   // If the eventStr matches one of the specials, we need to map it
   if (specials.indexOf(eventStr) !== -1) {
     if ('DAMAGE_SHIELD_MISSED' === eventStr) return 'MISSED';
