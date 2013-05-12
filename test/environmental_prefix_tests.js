@@ -19,12 +19,19 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-var spellishParser = require('./spell');
+var tap = require('tap');
+var parser = require('../prefixParsers/environmental');
 
-module.exports = {
-  'SPELL': spellishParser,
-  'SPELL_PERIODIC': spellishParser,
-  'SPELL_BUILDING': spellishParser,
-  'RANGE': spellishParser,
-  'ENVIRONMENTAL': require('./environmental')
-};
+var fields = [
+  '4/17 20:35:21.871  ENVIRONMENTAL_DAMAGE,0x0000000000000000,nil,',
+  '0x80000000,0x80000000,0x0700000005082392,"Rhisen",0x512,0x0,',
+  '0x0700000005082392,479914,147,29847,0,300000,Falling,74339,0,1,0,0,0,nil,',
+  'nil,nil'
+].join('').split(',');
+
+tap.test('', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields);
+  t.equal(logEntry.environmentalType, 'Falling');
+  t.end();
+});

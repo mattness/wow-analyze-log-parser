@@ -19,12 +19,8 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-var spellishParser = require('./spell');
+module.exports = _environmentalParse;
 
-module.exports = {
-  'SPELL': spellishParser,
-  'SPELL_PERIODIC': spellishParser,
-  'SPELL_BUILDING': spellishParser,
-  'RANGE': spellishParser,
-  'ENVIRONMENTAL': require('./environmental')
-};
+function _environmentalParse(fields) {
+  this.environmentalType = fields[15];
+}
