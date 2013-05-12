@@ -24,6 +24,7 @@ module.exports = {
 };
 
 var eventRegex = /^(\d{1,2})\/(\d{1,2})\s(\d+):(\d+):(\d+)\.(\d+)\s{2}(\w+)$/;
+var util = require('./util');
 
 // Prefixes and suffixes are semi-sorted so that the most common events are
 // early in the array, to minimize iterations when searching.  It's a micro-
@@ -91,14 +92,14 @@ function _baseParse(fields) {
 
   this.source = {
     id: fields[1],
-    name: fields[2],
+    name: util.stripQuotes(fields[2]),
     flags: _parseUnitFlags(fields[3]),
     raidFlags: _parseRaidFlags(fields[4])
   };
 
   this.destination = {
     id: fields[5],
-    name: fields[6],
+    name: util.stripQuotes(fields[6]),
     flags: _parseUnitFlags(fields[7]),
     raidFlags: _parseRaidFlags(fields[8])
   };
@@ -164,33 +165,33 @@ function _parseUnitFlags(flags) {
   return parsed = {
     raw: flags,
     objectType: {
-      object: testFlag(num, 0x4000),
-      guardian: testFlag(num, 0x2000),
-      pet: testFlag(num, 0x1000),
-      npc: testFlag(num, 0x0800),
-      player: testFlag(num, 0x0400),
+      object: util.testFlag(num, 0x4000),
+      guardian: util.testFlag(num, 0x2000),
+      pet: util.testFlag(num, 0x1000),
+      npc: util.testFlag(num, 0x0800),
+      player: util.testFlag(num, 0x0400),
     },
     controllerType: {
-      npc: testFlag(num, 0x200),
-      player: testFlag(num, 0x100)
+      npc: util.testFlag(num, 0x200),
+      player: util.testFlag(num, 0x100)
     },
     reactionType: {
-      hostile: testFlag(num, 0x40),
-      neutral: testFlag(num, 0x20),
-      friendly: testFlag(num, 0x10)
+      hostile: util.testFlag(num, 0x40),
+      neutral: util.testFlag(num, 0x20),
+      friendly: util.testFlag(num, 0x10)
     },
     affiliation: {
-      outsider: testFlag(num, 0x8),
-      raid: testFlag(num, 0x4),
-      party: testFlag(num, 0x2),
-      mine: testFlag(num, 0x1)
+      outsider: util.testFlag(num, 0x8),
+      raid: util.testFlag(num, 0x4),
+      party: util.testFlag(num, 0x2),
+      mine: util.testFlag(num, 0x1)
     },
     special: {
-      none: testFlag(num, 0x80000000),
-      mainAssist: testFlag(num, 0x00080000),
-      mainTank: testFlag(num, 0x00040000),
-      focus: testFlag(num, 0x00020000),
-      target: testFlag(num, 0x00010000)
+      none: util.testFlag(num, 0x80000000),
+      mainAssist: util.testFlag(num, 0x00080000),
+      mainTank: util.testFlag(num, 0x00040000),
+      focus: util.testFlag(num, 0x00020000),
+      target: util.testFlag(num, 0x00010000)
     }
   };
 }
@@ -203,23 +204,17 @@ function _parseRaidFlags(flags) {
   var parsed = {
     raw: flags,
     raidTarget: {
-      yellowStar: testFlag(num, 0x01),
-      orangeCircle: testFlag(num, 0x02),
-      purpleDiamond: testFlag(num, 0x04),
-      greenTriangle: testFlag(num, 0x08),
-      paleBlueMoon: testFlag(num, 0x10),
-      blueSquare: testFlag(num, 0x20),
-      redCross: testFlag(num, 0x40),
-      whiteSkull: testFlag(num, 0x80)
+      yellowStar: util.testFlag(num, 0x01),
+      orangeCircle: util.testFlag(num, 0x02),
+      purpleDiamond: util.testFlag(num, 0x04),
+      greenTriangle: util.testFlag(num, 0x08),
+      paleBlueMoon: util.testFlag(num, 0x10),
+      blueSquare: util.testFlag(num, 0x20),
+      redCross: util.testFlag(num, 0x40),
+      whiteSkull: util.testFlag(num, 0x80)
     }
   };
   return parsed;
-}
-
-function testFlag(num, flag) {
-  if(isNaN(num) || isNaN(flag)) return false;
-
-  return (num & flag) === flag;
 }
 
 // --------------------------------------------------------------------
