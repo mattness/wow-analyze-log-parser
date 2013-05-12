@@ -19,11 +19,34 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-var spellishParser = require('./spell');
+var stream = require('stream');
+var tap = require('tap');
+var parser = require('../prefixParsers/spell');
 
-module.exports = {
-  'SPELL': spellishParser,
-  'SPELL_PERIODIC': spellishParser,
-  'SPELL_BUILDING': spellishParser,
-  'RANGE': spellishParser
-};
+var fields = [
+  '4/17 19:37:22.434  SPELL_AURA_APPLIED,0x0700000003770840,"Robmy",0x514,',
+  '0x0,0x0700000003770840,"Robmy",0x514,0x0,34477,"Misdirection",0x1,',
+  '0x0700000003770840,467815,18836,183,2,100,BUFF'
+].join('').split(',');
+
+tap.test('spell prefix parses spell id', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields);
+  t.equal(logEntry.spellId, 34477);
+  t.end();
+});
+
+tap.test('spell prefix parses spell name', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields);
+  t.equal(logEntry.spellName, 'Misdirection');
+  t.end();
+});
+
+tap.test('spell prefix parses spell school', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields);
+  t.equal(logEntry.spellSchool.raw, '0x1', 'raw spell school should be 0x1');
+  t.ok(logEntry.spellSchool.physical, 'spell school should be physical');
+  t.end();
+});
