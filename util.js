@@ -21,7 +21,8 @@
 
 module.exports = {
   testFlag: testFlag,
-  stripQuotes: stripQuotes
+  stripQuotes: stripQuotes,
+  parseSchoolFlags: parseSchoolFlags
 };
 
 var quoteExp = new RegExp('^"|"$', "g");
@@ -38,4 +39,48 @@ function stripQuotes(str) {
   }
 
   return str.replace(quoteExp, '');
+}
+
+function parseSchoolFlags(flags) {
+  if (isNaN(flags)) return { raw: flags };
+
+  var num = parseInt(flags);
+
+  return {
+    raw: flags,
+    physical: testFlag(num, 0x1),
+    holy: testFlag(num, 0x2),
+    fire: testFlag(num, 0x4),
+    nature: testFlag(num, 0x8),
+    frost: testFlag(num, 0x10),
+    shadow: testFlag(num, 0x20),
+    arcane: testFlag(num, 0x40),
+    holystrike: testFlag(num, 0x3),
+    flamestrike: testFlag(num, 0x5),
+    holyfire: testFlag(num, 0x6),
+    stormstrike: testFlag(num, 0x9),
+    holystorm: testFlag(num, 0xA),
+    firestorm: testFlag(num, 0xC),
+    froststrike: testFlag(num, 0x11),
+    holyfrost: testFlag(num, 0x12),
+    frostfire: testFlag(num, 0x14),
+    froststorm: testFlag(num, 0x18),
+    shadowstrike: testFlag(num, 0x21),
+    shadowlight: testFlag(num, 0x22),
+    twilight: testFlag(num, 0x22),
+    shadowflame: testFlag(num, 0x24),
+    shadowstorm: testFlag(num, 0x28),
+    plague: testFlag(num, 0x28),
+    shadowfrost: testFlag(num, 0x30),
+    spellstrike: testFlag(num, 0x41),
+    divine: testFlag(num, 0x42),
+    spellfire: testFlag(num, 0x44),
+    spellstorm: testFlag(num, 0x48),
+    spellfrost: testFlag(num, 0x50),
+    spellshadow: testFlag(num, 0x60),
+    elemental: testFlag(num, 0x1C),
+    chromatic: testFlag(num, 0x7C),
+    magic: testFlag(num, 0x7E),
+    chaos: testFlag(num, 0x7F)
+  };
 }
