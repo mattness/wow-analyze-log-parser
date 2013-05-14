@@ -19,6 +19,35 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-module.exports = {
-  'DAMAGE': require('./damage')
-};
+var util = require('../util');
+
+module.exports = _damageParse;
+
+function _damageParse(fields) {
+  var offset = _determineOffset.call(this);
+  this.amount = parseInt(fields[0 + offset]);
+  this.overkill = parseInt(fields[1 + offset]);
+  this.school = util.parseSchoolFlags(fields[2 + offset]);
+  this.resisted = parseInt(fields[3 + offset]);
+  this.blocked = parseInt(fields[4 + offset]);
+  this.absorbed = parseInt(fields[5 + offset]);
+  this.critical = fields[6 + offset] === '1';
+  this.glancing = fields[7 + offset] === '1';
+  this.crushing = fields[8 + offset] === '1';
+}
+
+function _determineOffset() {
+  switch (this.prefix) {
+    case 'SWING':
+      return 9;
+    case 'ENVIRONMENTAL':
+      return 16;
+    case 'RANGE':
+    case 'SPELL':
+      return 18;
+    case 'SPELL_PERIODIC':
+      return 12;
+    default:
+      return 0;
+  }
+}
