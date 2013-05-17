@@ -30,7 +30,7 @@ Parser.prototype._flush = _flush;
 
 
 function _transform(chunk, encoding, done) {
-  var data = this.buffer + chunk.toString(encoding || 'utf8');
+  var data = this.buffer + chunk.toString();
   var index, offset = 0;
 
   do {
