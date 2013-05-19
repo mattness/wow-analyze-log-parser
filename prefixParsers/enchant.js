@@ -19,13 +19,12 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-var spellishParser = require('./spell');
+var util = require('../util');
 
-module.exports = {
-  'SPELL': spellishParser,
-  'SPELL_PERIODIC': spellishParser,
-  'SPELL_BUILDING': spellishParser,
-  'RANGE': spellishParser,
-  'ENVIRONMENTAL': require('./environmental'),
-  'ENCHANT': require('./enchant')
-};
+module.exports = _enchantParse;
+
+function _enchantParse(fields) {
+  this.spellName = util.stripQuotes(fields[9]);
+  this.itemId = parseInt(fields[10]);
+  this.itemName = util.stripQuotes(fields[11]);
+}

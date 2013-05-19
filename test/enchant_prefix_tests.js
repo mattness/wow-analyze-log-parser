@@ -19,13 +19,32 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-var spellishParser = require('./spell');
+var tap = require('tap');
+var parser = require('../prefixParsers/enchant');
 
-module.exports = {
-  'SPELL': spellishParser,
-  'SPELL_PERIODIC': spellishParser,
-  'SPELL_BUILDING': spellishParser,
-  'RANGE': spellishParser,
-  'ENVIRONMENTAL': require('./environmental'),
-  'ENCHANT': require('./enchant')
-};
+var fields = [
+  '4/17 20:14:18.584  ENCHANT_APPLIED,0x070000000350D70C,"Valinea",0x511,0x0,',
+  '0x070000000350D70C,"Valinea",0x511,0x0,"Earthliving",94805,',
+  '"Giorgio\'s Caduceus of Pure Moods"'
+].join('').split(',');
+
+tap.test('enchant prefix parses spell name', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields);
+  t.equal(logEntry.spellName, 'Earthliving');
+  t.end();
+});
+
+tap.test('enchant prefix parses item id', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields);
+  t.equal(logEntry.itemId, 94805);
+  t.end();
+});
+
+tap.test('enchant prefix parses item name', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields);
+  t.equal(logEntry.itemName, 'Giorgio\'s Caduceus of Pure Moods');
+  t.end();
+});

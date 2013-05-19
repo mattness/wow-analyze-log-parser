@@ -38,6 +38,7 @@ var eventPrefixes = [
   'SWING',
   'RANGE',
   'ENVIRONMENTAL',
+  'ENCHANT',
   'UNIT_DIED',
   'UNIT_DESTROYED',
   'PARTY_KILL'
