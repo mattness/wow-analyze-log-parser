@@ -92,7 +92,6 @@ function createLogEntry(fields) {
 };
 
 function _baseParse(fields) {
-  // 4/17 19:37:22.434  SPELL_AURA_APPLIED,0x0700000003770840,"Robmy",0x514,0x0,0x0700000003770840,"Robmy",0x514,0x0,34477,"Misdirection",0x1,0x0700000003770840,467815,18836,183,2,100,BUFF
   this.rawData = fields.join(',');
   _parseEvent.call(this, fields[0]);
 
@@ -117,6 +116,9 @@ function _parseEvent(eventStr) {
   this.timestamp = new Date(now.getFullYear(), grps[1] - 1, grps[2], grps[3],
     grps[4], grps[5], grps[6]);
 
+  // If the timestamp date is in the future, then we probably guessed the year
+  // wrong when we used the current year.  Assume the logs are from the
+  // previous year in that case.
   if (now < this.timestamp) this.timestamp.setFullYear(now.getFullYear() - 1);
 
   this.event = grps[7];

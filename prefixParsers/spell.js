@@ -20,7 +20,6 @@
 // IN THE SOFTWARE.
 
 var util = require('../util');
-var testFlag = util.testFlag;
 
 module.exports = _spellParse;
 

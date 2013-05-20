@@ -19,7 +19,6 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-var stream = require('stream');
 var tap = require('tap');
 var parser = require('../prefixParsers/spell');
 
