@@ -1,0 +1,198 @@
+Completed
+
+
+
+DAMAGE_SPLIT
+=======================
+[0] Time Stamp/Event: 4/17 20:19:09.317  DAMAGE_SPLIT
+[1] Source Guid     : 0x07000000046BE9DB
+[2] Source Name     : "Pouchierize"
+[3] Source Flags    : 0x514
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0x0700000004F708C5
+[6] Dest Name       : "Alteran"
+[7] Dest Flags      : 0x512
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 6940
+[10] Spell Name     : "Hand of Sacrifice"
+[11] Spell School   : 0x2
+[12] Amount         : 0
+[13] Overkill       : -1
+[14] School         : 1
+[15] Resisted       : 0
+[16] Blocked        : 0
+[17] Absorbed       : 15753
+[18] Critical       : nil
+[19] Glancing       : nil
+[20] Crushing       : nil
+
+ENCHANT_APPLIED
+=======================
+[0] Time Stamp/Event: 4/17 20:14:18.584  ENCHANT_APPLIED
+[1] Source Guid     : 0x070000000350D70C
+[2] Source Name     : "Valinea"
+[3] Source Flags    : 0x511
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0x070000000350D70C
+[6] Dest Name       : "Valinea"
+[7] Dest Flags      : 0x511
+[8] Dest Raid Flags : 0x0
+[9] Spell Name      : "Earthliving"
+[10] Item ID        : 94805
+[11] Item Name      : "Giorgio's Caduceus of Pure Moods"
+
+ENCHANT_REMOVED
+=======================
+[0] Time Stamp/Event: 4/17 20:14:18.584  ENCHANT_REMOVED
+[1] Source Guid     : 0x0000000000000000
+[2] Source Name     : nil
+[3] Source Flags    : 0x80000000
+[4] Source RFlags   : 0x80000000
+[5] Dest Guid       : 0x070000000350D70C
+[6] Dest Name       : "Valinea"
+[7] Dest Flags      : 0x511
+[8] Dest Raid Flags : 0x0
+[9] Spell Name      : "Earthliving"
+[10] Item ID        : 94805
+[11] Item Name      : "Giorgio's Caduceus of Pure Moods"
+
+PARTY_KILL
+=======================
+[0] Time Stamp/Event: 4/17 19:37:48.974  PARTY_KILL
+[1] Source Guid     : 0x0700000005082392
+[2] Source Name     : "Rhisen"
+[3] Source Flags    : 0x512
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0xF131125600002C9B
+[6] Dest Name       : "Zandalari Blade Initiate"
+[7] Dest Flags      : 0xa48
+[8] Dest Raid Flags : 0x0
+
+SPELL_CREATE
+=======================
+[0] Time Stamp/Event: 4/17 19:37:32.659  SPELL_CREATE
+[1] Source Guid     : 0x0700000003770840
+[2] Source Name     : "Robmy"
+[3] Source Flags    : 0x514
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0xF11283E700000459
+[6] Dest Name       : "Explosive Trap"
+[7] Dest Flags      : 0x4228
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 82938
+[10] Spell Name     : "Explosive Trap"
+[11] Spell School   : 0x4
+
+SPELL_INSTAKILL
+=======================
+[0] Time Stamp/Event: 4/17 19:39:30.091  SPELL_INSTAKILL
+[1] Source Guid     : 0x0700000005082392
+[2] Source Name     : "Rhisen"
+[3] Source Flags    : 0x512
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0xF140D411FF0001E7
+[6] Dest Name       : "Zhaanhym"
+[7] Dest Flags      : 0x1112
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 108503
+[10] Spell Name     : "Grimoire of Sacrifice"
+[11] Spell School   : 0x20
+
+SPELL_PERIODIC_DAMAGE
+=======================
+[0] Time Stamp/Event: 4/17 19:37:32.042  SPELL_PERIODIC_DAMAGE
+[1] Source Guid     : 0x0700000004BF08F0
+[2] Source Name     : "Avance"
+[3] Source Flags    : 0x512
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0xF131125600002C9C
+[6] Dest Name       : "Zandalari Blade Initiate"
+[7] Dest Flags      : 0xa48
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 14914
+[10] Spell Name     : "Holy Fire"
+[11] Spell School   : 0x2
+[12] Amount         : 973
+[13] Overkill       : -1
+[14] School         : 2
+[15] Resisted       : 0
+[16] Blocked        : 0
+[17] Absorbed       : 0
+[18] Critical       : nil
+[19] Glancing       : nil
+[20] Crushing       : nil
+
+SPELL_RESURRECT
+=======================
+[0] Time Stamp/Event: 4/17 19:52:58.132  SPELL_RESURRECT
+[1] Source Guid     : 0x0700000005082392
+[2] Source Name     : "Rhisen"
+[3] Source Flags    : 0x512
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0x0700000004FFF0CF
+[6] Dest Name       : "Elemmentt"
+[7] Dest Flags      : 0x514
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 95750
+[10] Spell Name     : "Soulstone Resurrection"
+[11] Spell School   : 0x20
+
+SPELL_SUMMON
+=======================
+[0] Time Stamp/Event: 4/17 19:37:35.672  SPELL_SUMMON
+[1] Source Guid     : 0x0700000005166A86
+[2] Source Name     : "Moarspirit"
+[3] Source Flags    : 0x514
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0xF130F20E000032A0
+[6] Dest Name       : "Shadowy Apparition"
+[7] Dest Flags      : 0xa28
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 87426
+[10] Spell Name     : "Shadowy Apparition"
+[11] Spell School   : 0x20
+
+SWING_DAMAGE
+=======================
+[0] Time Stamp/Event: 4/17 19:37:24.852  SWING_DAMAGE
+[1] Source Guid     : 0x07000000050E0AFD
+[2] Source Name     : "Zoltam"
+[3] Source Flags    : 0x514
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0xF1310F0C00002C9A
+[6] Dest Name       : "Zandalari Spear-Shaper"
+[7] Dest Flags      : 0xa28
+[8] Dest Raid Flags : 0x0
+[9] Amount          : 12845
+[10] Overkill       : -1
+[11] School         : 1
+[12] Resisted       : 0
+[13] Blocked        : 0
+[14] Absorbed       : 0
+[15] Critical       : nil
+[16] Glancing       : nil
+[17] Crushing       : nil
+
+UNIT_DESTROYED
+=======================
+[0] Time Stamp/Event: 4/17 19:37:55.011  UNIT_DESTROYED
+[1] Source Guid     : 0x0000000000000000
+[2] Source Name     : nil
+[3] Source Flags    : 0x80000000
+[4] Source RFlags   : 0x80000000
+[5] Dest Guid       : 0xF1300DC7000032A8
+[6] Dest Name       : "Healing Stream Totem"
+[7] Dest Flags      : 0x2111
+[8] Dest Raid Flags : 0x0
+
+UNIT_DIED
+=======================
+[0] Time Stamp/Event: 4/17 19:37:49.373  UNIT_DIED
+[1] Source Guid     : 0x0000000000000000
+[2] Source Name     : nil
+[3] Source Flags    : 0x80000000
+[4] Source RFlags   : 0x80000000
+[5] Dest Guid       : 0xF131125600002C9B
+[6] Dest Name       : "Zandalari Blade Initiate"
+[7] Dest Flags      : 0xa48
+[8] Dest Raid Flags : 0x0
