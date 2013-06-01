@@ -9,12 +9,12 @@ ENVIRONMENTAL_DAMAGE
 [6] Dest Name       : "Rhisen"
 [7] Dest Flags      : 0x512
 [8] Dest Raid Flags : 0x0
-[9] ???             : 0x0700000005082392
-[10] ???            : 479914
-[11] ???            : 147
+[9] Affected Guid   : 0x0700000005082392
+[10] Health After   : 479914
+[11] Zone ID?       : 147
 [12] ???            : 29847
-[13] ???            : 0
-[14] ???            : 300000
+[13] Power Type     : 0
+[14] Power After    : 300000
 [15] Type           : Falling
 [16] Amount         : 74339
 [17] Overkill       : 0
