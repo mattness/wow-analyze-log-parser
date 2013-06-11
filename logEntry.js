@@ -20,7 +20,8 @@
 // IN THE SOFTWARE.
 
 module.exports = {
-  create: createLogEntry
+  create: createLogEntry,
+  baseFieldsLength: 9
 };
 
 var eventRegex = /^(\d{1,2})\/(\d{1,2})\s(\d+):(\d+):(\d+)\.(\d+)\s{2}(\w+)$/;
@@ -81,12 +82,13 @@ var specials = [
 ];
 
 function createLogEntry(fields) {
-  var noop = function() { };
+  var noop = function(fields, offset) { return offset; };
   var logEntry = {};
-
-  _baseParse.call(logEntry, fields);
-  (prefixParsers[logEntry.eventPrefix] || noop).call(logEntry, fields);
-  (suffixParsers[logEntry.eventSuffix] || noop).call(logEntry, fields);
+  var offset = _baseParse.call(logEntry, fields);
+  var prefixParser = prefixParsers[logEntry.eventPrefix] || noop;
+  var suffixParser = suffixParsers[logEntry.eventSuffix] || noop;
+  offset = prefixParser.call(logEntry, fields, offset);
+  suffixParser.call(logEntry, fields, offset);
 
   return logEntry;
 };
@@ -108,6 +110,8 @@ function _baseParse(fields) {
     flags: _parseUnitFlags(fields[7]),
     raidFlags: _parseRaidFlags(fields[8])
   };
+
+  return module.exports.baseFieldsLength; // Next field to be parsed
 }
 
 function _parseEvent(eventStr) {

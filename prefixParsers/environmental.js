@@ -20,7 +20,11 @@
 // IN THE SOFTWARE.
 
 module.exports = _environmentalParse;
+var affectedUnitParser = require('./affectedUnit');
 
-function _environmentalParse(fields) {
-  this.environmentalType = fields[15];
+function _environmentalParse(fields, offset) {
+  offset = affectedUnitParser.call(this, fields, offset);
+  this.environmentalType = fields[offset++];
+
+  return offset;
 }

@@ -20,11 +20,14 @@
 // IN THE SOFTWARE.
 
 var util = require('../util');
+var affectedUnitParser = require('./affectedUnit');
 
 module.exports = _spellParse;
 
-function _spellParse(fields) {
-  this.spellId = parseInt(fields[9]);
-  this.spellName = util.stripQuotes(fields[10]);
-  this.spellSchool = util.parseSchoolFlags(fields[11]);
+function _spellParse(fields, offset) {
+  this.spellId = parseInt(fields[offset++]);
+  this.spellName = util.stripQuotes(fields[offset++]);
+  this.spellSchool = util.parseSchoolFlags(fields[offset++]);
+
+  return affectedUnitParser.call(this, fields, offset);
 }

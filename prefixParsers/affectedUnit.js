@@ -19,18 +19,30 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-var util = require('../util');
+module.exports = _affectedUnit;
 
-module.exports = _damageParse;
+var validEvents = [
+  'ENVIRONMENTAL_DAMAGE', 'RANGE_DAMAGE', 'SPELL_AURA_APPLIED',
+  'SPELL_AURA_APPLIED_DOSE', 'SPELL_AURA_BROKEN_SPELL', 'SPELL_AURA_REFRESH',
+  'SPELL_AURA_REMOVED', 'SPELL_AURA_REMOVED_DOSE', 'SPELL_CAST_START',
+  'SPELL_CAST_SUCCESS', 'SPELL_DAMAGE', 'SPELL_DISPEL', 'SPELL_ENERGIZE',
+  'SPELL_HEAL', 'SPELL_INTERRUPT', 'SPELL_MISSED', 'SPELL_PERIODIC_ENERGIZE',
+  'SPELL_STOLEN'
+];
 
-function _damageParse(fields, offset) {
-  this.amount = parseInt(fields[offset++]);
-  this.overkill = parseInt(fields[offset++]);
-  this.school = util.parseSchoolFlags(fields[offset++]);
-  this.resisted = parseInt(fields[offset++]);
-  this.blocked = parseInt(fields[offset++]);
-  this.absorbed = parseInt(fields[offset++]);
-  this.critical = fields[offset++] === '1';
-  this.glancing = fields[offset++] === '1';
-  this.crushing = fields[offset++] === '1';
+function _affectedUnit(fields, offset) {
+  if (!_shouldParse.call(this)) return offset;
+
+  this.affectedUnit = {
+    id: fields[offset],
+    healthAfter: parseInt(fields[1 + offset]),
+    powerType: parseInt(fields[4 + offset]),
+    powerAfter: parseInt(fields[5 + offset])
+  }
+
+  return offset + 6;
+}
+
+function _shouldParse() {
+  return validEvents.indexOf(this.event) !== -1;
 }

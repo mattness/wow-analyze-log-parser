@@ -23,8 +23,10 @@ var util = require('../util');
 
 module.exports = _enchantParse;
 
-function _enchantParse(fields) {
-  this.spellName = util.stripQuotes(fields[9]);
-  this.itemId = parseInt(fields[10]);
-  this.itemName = util.stripQuotes(fields[11]);
+function _enchantParse(fields, offset) {
+  this.spellName = util.stripQuotes(fields[offset++]);
+  this.itemId = parseInt(fields[offset++]);
+  this.itemName = util.stripQuotes(fields[offset++]);
+
+  return offset;
 }

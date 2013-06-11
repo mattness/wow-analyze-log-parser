@@ -56,6 +56,34 @@ ENCHANT_REMOVED
 [10] Item ID        : 94805
 [11] Item Name      : "Giorgio's Caduceus of Pure Moods"
 
+ENVIRONMENTAL_DAMAGE
+=======================
+[0] Time Stamp/Event: 4/17 20:35:21.871  ENVIRONMENTAL_DAMAGE
+[1] Source Guid     : 0x0000000000000000
+[2] Source Name     : nil
+[3] Source Flags    : 0x80000000
+[4] Source RFlags   : 0x80000000
+[5] Dest Guid       : 0x0700000005082392
+[6] Dest Name       : "Rhisen"
+[7] Dest Flags      : 0x512
+[8] Dest Raid Flags : 0x0
+[9] Affected Guid   : 0x0700000005082392
+[10] Health After   : 479914
+[11] Zone ID?       : 147
+[12] ???            : 29847
+[13] Power Type     : 0
+[14] Power After    : 300000
+[15] Type           : Falling
+[16] Amount         : 74339
+[17] Overkill       : 0
+[18] School         : 1
+[19] Resisted       : 0
+[20] Blocked        : 0
+[21] Absorbed       : 0
+[22] Critical       : nil
+[23] Glancing       : nil
+[24] Crushing       : nil
+
 PARTY_KILL
 =======================
 [0] Time Stamp/Event: 4/17 19:37:48.974  PARTY_KILL
@@ -67,6 +95,78 @@ PARTY_KILL
 [6] Dest Name       : "Zandalari Blade Initiate"
 [7] Dest Flags      : 0xa48
 [8] Dest Raid Flags : 0x0
+
+RANGE_DAMAGE
+=======================
+[0] Time Stamp/Event: 4/17 19:37:32.926  RANGE_DAMAGE
+[1] Source Guid     : 0x0700000003770840
+[2] Source Name     : "Robmy"
+[3] Source Flags    : 0x514
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0xF1310F0C00002C9A
+[6] Dest Name       : "Zandalari Spear-Shaper"
+[7] Dest Flags      : 0xa48
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 75
+[10] Spell Name     : "Auto Shot"
+[11] Spell School   : 0x1
+[12] Affected Guid  : 0xF1310F0C00002C9A
+[13] Health After   : 14870221
+[14] Zone ID?       : 1234
+[15] ???            : 65
+[16] Power Type     : 0
+[17] Power After    : 0
+[18] Amount         : 20196
+[19] Overkill       : -1
+[20] School         : 1
+[21] Resisted       : 0
+[22] Blocked        : 0
+[23] Absorbed       : 0
+[24] Critical       : nil
+[25] Glancing       : nil
+[26] Crushing       : nil
+
+SPELL_CAST_START
+=======================
+[0] Time Stamp/Event: 4/17 19:37:25.002  SPELL_CAST_START
+[1] Source Guid     : 0x0700000005082392
+[2] Source Name     : "Rhisen"
+[3] Source Flags    : 0x512
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0x0000000000000000
+[6] Dest Name       : nil
+[7] Dest Flags      : 0x80000000
+[8] Dest Raid Flags : 0x80000000
+[9] Spell ID        : 108686
+[10] Spell Name     : "Immolate"
+[11] Spell School   : 0x4
+[12] Affected Guid  : 0x0700000005082392
+[13] Health After   : 514163
+[14] Zone ID?       : 147
+[15] ???            : 28442
+[16] Power Type     : 0
+[17] Power After    : 300000
+
+SPELL_CAST_SUCCESS
+=======================
+[0] Time Stamp/Event: 4/17 19:37:22.434  SPELL_CAST_SUCCESS
+[1] Source Guid     : 0x0700000003770840
+[2] Source Name     : "Robmy"
+[3] Source Flags    : 0x514
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0x07000000046BE9DB
+[6] Dest Name       : "Pouchierize"
+[7] Dest Flags      : 0x514
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 34477
+[10] Spell Name     : "Misdirection"
+[11] Spell School   : 0x1
+[12] Affected Guid  : 0x0700000003770840
+[13] Health After   : 467815
+[14] Zone ID?       : 18836
+[15] ???            : 183
+[16] Power Type     : 0
+[17] Power After    : 0
 
 SPELL_CREATE
 =======================
@@ -82,6 +182,36 @@ SPELL_CREATE
 [9] Spell ID        : 82938
 [10] Spell Name     : "Explosive Trap"
 [11] Spell School   : 0x4
+
+SPELL_DAMAGE
+=======================
+[0] Time Stamp/Event: 4/17 19:37:32.042  SPELL_DAMAGE
+[1] Source Guid     : 0x07000000046BE9DB
+[2] Source Name     : "Pouchierize"
+[3] Source Flags    : 0x514
+[4] Source RFlags   : 0x0
+[5] Dest Guid       : 0xF131125600002C9C
+[6] Dest Name       : "Zandalari Blade Initiate"
+[7] Dest Flags      : 0xa48
+[8] Dest Raid Flags : 0x0
+[9] Spell ID        : 6572
+[10] Spell Name     : "Revenge"
+[11] Spell School   : 0x1
+[12] Affected Guid  : 0xF131125600002C9C
+[13] Health After   : 4331177
+[14] Zone ID?       : 1234
+[15] ???            : 65
+[16] Power Type     : 0
+[17] Power After    : 0
+[18] Amount         : 4232
+[19] Overkill       : -1
+[20] School         : 1
+[21] Resisted       : 0
+[22] Blocked        : 0
+[23] Absorbed       : 0
+[24] Critical       : nil
+[25] Glancing       : nil
+[26] Crushing       : nil
 
 SPELL_INSTAKILL
 =======================

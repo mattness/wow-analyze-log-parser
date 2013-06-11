@@ -21,6 +21,7 @@
 
 var tap = require('tap');
 var parser = require('../prefixParsers/enchant');
+var entry = require('../logEntry');
 
 var fields = [
   '4/17 20:14:18.584  ENCHANT_APPLIED,0x070000000350D70C,"Valinea",0x511,0x0,',
@@ -30,21 +31,21 @@ var fields = [
 
 tap.test('enchant prefix parses spell name', function(t) {
   var logEntry = {};
-  parser.call(logEntry, fields);
+  parser.call(logEntry, fields, entry.baseFieldsLength);
   t.equal(logEntry.spellName, 'Earthliving');
   t.end();
 });
 
 tap.test('enchant prefix parses item id', function(t) {
   var logEntry = {};
-  parser.call(logEntry, fields);
+  parser.call(logEntry, fields, entry.baseFieldsLength);
   t.equal(logEntry.itemId, 94805);
   t.end();
 });
 
 tap.test('enchant prefix parses item name', function(t) {
   var logEntry = {};
-  parser.call(logEntry, fields);
+  parser.call(logEntry, fields, entry.baseFieldsLength);
   t.equal(logEntry.itemName, 'Giorgio\'s Caduceus of Pure Moods');
   t.end();
 });

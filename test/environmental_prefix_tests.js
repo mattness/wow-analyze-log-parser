@@ -21,6 +21,7 @@
 
 var tap = require('tap');
 var parser = require('../prefixParsers/environmental');
+var entry = require('../logEntry');
 
 var fields = [
   '4/17 20:35:21.871  ENVIRONMENTAL_DAMAGE,0x0000000000000000,nil,',
@@ -30,8 +31,8 @@ var fields = [
 ].join('').split(',');
 
 tap.test('', function(t) {
-  var logEntry = {};
-  parser.call(logEntry, fields);
+  var logEntry = { event: 'ENVIRONMENTAL_DAMAGE' };
+  parser.call(logEntry, fields, entry.baseFieldsLength);
   t.equal(logEntry.environmentalType, 'Falling');
   t.end();
 });

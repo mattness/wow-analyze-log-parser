@@ -21,11 +21,30 @@
 
 module.exports = _affectedUnit;
 
+var validEvents = [
+  'ENVIRONMENTAL_DAMAGE', 'RANGE_DAMAGE', 'SPELL_AURA_APPLIED',
+  'SPELL_AURA_APPLIED_DOSE', 'SPELL_AURA_BROKEN_SPELL', 'SPELL_AURA_REFRESH',
+  'SPELL_AURA_REMOVED', 'SPELL_AURA_REMOVED_DOSE', 'SPELL_CAST_START',
+  'SPELL_CAST_SUCCESS', 'SPELL_DAMAGE', 'SPELL_DISPEL', 'SPELL_ENERGIZE',
+  'SPELL_HEAL', 'SPELL_INTERRUPT', 'SPELL_MISSED', 'SPELL_PERIODIC_ENERGIZE',
+  'SPELL_STOLEN'
+];
+
 function _affectedUnit(fields, offset) {
+  if (!_shouldParse.call(this)) return offset;
+
   this.affectedUnit = {
     id: fields[offset],
     healthAfter: parseInt(fields[1 + offset]),
+    // TODO (mattness): fields[2 + offset]
+    // TODO (mattness): fields[3 + offset]
     powerType: parseInt(fields[4 + offset]),
     powerAfter: parseInt(fields[5 + offset])
   }
+
+  return offset + 6;
+}
+
+function _shouldParse() {
+  return validEvents.indexOf(this.event) !== -1;
 }
