@@ -19,7 +19,37 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-module.exports = {
-  'DAMAGE': require('./damage'),
-  'MISSED': require('./missed')
-};
+var tap = require('tap');
+var parser = require('../suffixParsers/missed');
+
+var fields = [
+  '4/17 20:10:45.110  RANGE_MISSED,0x0700000003770840,"Robmy",0x514,0x0,',
+  '0xF131110B00002C45,"Farraki Sand Conjurer",0xa48,0x0,75,"Auto Shot",0x1,',
+  'ABSORB,19957'
+].join('').split(',');
+
+var parryFields = [
+  '4/17 19:37:34.277  SWING_MISSED,0x0700000004FFF0CF,"Elemmentt",0x514,0x0,',
+  '0xF131125600002C9C,"Zandalari Blade Initiate",0xa48,0x0,PARRY'
+].join('').split(',');
+
+tap.test('missed suffix parses miss type', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields, 12);
+  t.equal(logEntry.missType, 'ABSORB');
+  t.end();
+});
+
+tap.test('missed suffix parses absorbed amount', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, fields, 12);
+  t.equal(logEntry.absorbedAmount, 19957);
+  t.end();
+});
+
+tap.test('missed suffix ignores absorbed amt for non-absorbs', function(t) {
+  var logEntry = {};
+  parser.call(logEntry, parryFields, 9);
+  t.equal(logEntry.absorbedAmount, undefined);
+  t.end();
+});

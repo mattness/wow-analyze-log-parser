@@ -19,7 +19,12 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-module.exports = {
-  'DAMAGE': require('./damage'),
-  'MISSED': require('./missed')
-};
+module.exports = _missedParse;
+
+function _missedParse(fields, offset) {
+  this.missType = fields[offset++];
+
+  if (this.missType === 'ABSORB') {
+    this.absorbedAmount = parseInt(fields[offset++]);
+  }
+}

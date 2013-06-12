@@ -1,20 +1,3 @@
-RANGE_MISSED
-=======================
-[0] Time Stamp/Event: 4/17 20:10:45.110  RANGE_MISSED
-[1] Source Guid     : 0x0700000003770840
-[2] Source Name     : "Robmy"
-[3] Source Flags    : 0x514
-[4] Source RFlags   : 0x0
-[5] Dest Guid       : 0xF131110B00002C45
-[6] Dest Name       : "Farraki Sand Conjurer"
-[7] Dest Flags      : 0xa48
-[8] Dest Raid Flags : 0x0
-[9] Spell ID        : 75
-[10] Spell Name     : "Auto Shot"
-[11] Spell School   : 0x1
-[12] Miss Type      : ABSORB
-[13] Amount Missed  : 19957
-
 SPELL_AURA_APPLIED
 =======================
 [0] Time Stamp/Event: 4/17 19:37:22.434  SPELL_AURA_APPLIED
@@ -266,28 +249,6 @@ SPELL_INTERRUPT
 [19] ???            : "Stone Gaze"
 [20] ???            : 1
 
-SPELL_MISSED
-=======================
-[0] Time Stamp/Event: 4/17 19:37:34.294  SPELL_MISSED
-[1] Source Guid     : 0x0000000000000000
-[2] Source Name     : nil
-[3] Source Flags    : 0x2248
-[4] Source RFlags   : 0x0
-[5] Dest Guid       : 0x0700000005166A86
-[6] Dest Name       : "Moarspirit"
-[7] Dest Flags      : 0x514
-[8] Dest Raid Flags : 0x0
-[9] Spell ID        : 136989
-[10] Spell Name     : "Throw Spear"
-[11] Spell School   : 0x1
-[12] ???            : 0xF1310F3E0000329E
-[13] ???            : 315153
-[14] ???            : 1024
-[15] ???            : 405
-[16] ???            : 0
-[17] ???            : 0
-[18] ???            : MISS
-
 SPELL_PERIODIC_ENERGIZE
 =======================
 [0] Time Stamp/Event: 4/17 19:37:29.624  SPELL_PERIODIC_ENERGIZE
@@ -330,23 +291,6 @@ SPELL_PERIODIC_HEAL
 [14] ???            : 0
 [15] ???            : nil
 
-SPELL_PERIODIC_MISSED
-=======================
-[0] Time Stamp/Event: 4/17 19:37:41.851  SPELL_PERIODIC_MISSED
-[1] Source Guid     : 0xF131125600002C9B
-[2] Source Name     : "Zandalari Blade Initiate"
-[3] Source Flags    : 0xa48
-[4] Source RFlags   : 0x0
-[5] Dest Guid       : 0x07000000050E0AFD
-[6] Dest Name       : "Zoltam"
-[7] Dest Flags      : 0x10514
-[8] Dest Raid Flags : 0x0
-[9] Spell ID        : 140049
-[10] Spell Name     : "Wounding Strike"
-[11] Spell School   : 0x1
-[12] Miss Type      : ABSORB
-[13] Missed Amount  : 14399
-
 SPELL_STOLEN
 =======================
 [0] Time Stamp/Event: 4/17 20:07:25.805  SPELL_STOLEN
@@ -371,16 +315,3 @@ SPELL_STOLEN
 [19] ???            : "Spellsteal"
 [20] ???            : 64
 [21] ???            : BUFF
-
-SWING_MISSED
-=======================
-[0] Time Stamp/Event: 4/17 19:37:34.277  SWING_MISSED
-[1] Source Guid     : 0x0700000004FFF0CF
-[2] Source Name     : "Elemmentt"
-[3] Source Flags    : 0x514
-[4] Source RFlags   : 0x0
-[5] Dest Guid       : 0xF131125600002C9C
-[6] Dest Name       : "Zandalari Blade Initiate"
-[7] Dest Flags      : 0xa48
-[8] Dest Raid Flags : 0x0
-[9] Miss Type       : PARRY
