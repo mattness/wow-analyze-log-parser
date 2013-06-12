@@ -19,15 +19,32 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-var auraParser = require('./aura');
+module.exports = _auraParse;
 
-module.exports = {
-  'DAMAGE': require('./damage'),
-  'MISSED': require('./missed'),
-  'AURA_APPLIED': auraParser,
-  'AURA_REMOVED': auraParser,
-  'AURA_APPLIED_DOSE': auraParser,
-  'AURA_REMOVED_DOSE': auraParser,
-  'AURA_REFRESH': auraParser,
-  'AURA_BROKEN_SPELL': auraParser
-};
+var util = require('../util');
+
+function _auraParse(fields, offset) {
+  offset = _parseBroken.call(this, fields, offset);
+  var isBuff = fields[offset++] === 'BUFF';
+
+  this.auraType = {
+    buff: isBuff,
+    debuff: !isBuff
+  };
+
+  if (offset <= fields.length) {
+    this.amount = parseInt(fields[offset++]);
+  }
+
+  return offset;
+}
+
+function _parseBroken(fields, offset) {
+  if (this.suffix === 'AURA_BROKEN_SPELL') {
+    this.brokenSpellId = parseInt(fields[offset++]);
+    this.brokenSpellName = util.stripQuotes(fields[offset++]);
+    this.brokenSpellSchool = util.parseSchoolFlags(fields[offset++]);
+  }
+
+  return offset;
+}
