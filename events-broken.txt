@@ -1,26 +1,3 @@
-SPELL_ENERGIZE
-=======================
-[0] Time Stamp/Event: 4/17 19:37:24.335  SPELL_ENERGIZE
-[1] Source Guid     : 0x07000000050E0AFD
-[2] Source Name     : "Zoltam"
-[3] Source Flags    : 0x514
-[4] Source RFlags   : 0x0
-[5] Dest Guid       : 0x07000000050E0AFD
-[6] Dest Name       : "Zoltam"
-[7] Dest Flags      : 0x514
-[8] Dest Raid Flags : 0x0
-[9] Spell ID        : 105427
-[10] Spell Name     : "Judgments of the Wise"
-[11] Spell School   : 0x1
-[12] Affected Guid  : 0x07000000050E0AFD
-[13] Health After   : 606448
-[14] Zone ID?       : 28264
-[15] ???            : 109
-[16] Power Type     : 0
-[17] Power After    : 56109
-[18] ???            : 1
-[19] ???            : 9
-
 SPELL_HEAL
 =======================
 [0] Time Stamp/Event: 4/17 19:37:25.204  SPELL_HEAL
