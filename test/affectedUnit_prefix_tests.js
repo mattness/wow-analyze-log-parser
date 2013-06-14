@@ -121,7 +121,7 @@ tap.test('affected unit prefix parses health after amount', function(t) {
 tap.test('affected unit prefix parses power type', function(t) {
   var logEntry = { event: 'ENVIRONMENTAL_DAMAGE' };
   parser.call(logEntry, fields, entry.baseFieldsLength);
-  t.equal(0, logEntry.affectedUnit.powerType);
+  t.ok(logEntry.affectedUnit.powerType.mana);
   t.end();
 });
 

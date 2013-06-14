@@ -22,7 +22,8 @@
 module.exports = {
   testFlag: testFlag,
   stripQuotes: stripQuotes,
-  parseSchoolFlags: parseSchoolFlags
+  parseSchoolFlags: parseSchoolFlags,
+  parsePowerType: parsePowerType
 };
 
 var quoteExp = new RegExp('^"|"$', "g");
@@ -82,5 +83,22 @@ function parseSchoolFlags(flags) {
     chromatic: testFlag(num, 0x7C),
     magic: testFlag(num, 0x7E),
     chaos: testFlag(num, 0x7F)
+  };
+}
+
+function parsePowerType(powerType) {
+  if (isNaN(powerType)) return { raw: powerType };
+
+  var num = parseInt(powerType);
+  return {
+    raw: num,
+    health: num === -2,
+    mana: num === 0,
+    rage: num === 1,
+    focus: num === 2,
+    energy: num === 3,
+    runes: num === 5,
+    runicPower: num === 6,
+    holyPower: num === 9
   };
 }

@@ -72,3 +72,37 @@ tap.test('testFlag returns false when flag is not set', function(t) {
   t.notOk(util.testFlag('5', 0x2));
   t.end();
 });
+
+tap.test('parsePowerType returns only raw for non-numerics', function(t) {
+  t.similar(util.parsePowerType('asdf'), { raw: 'asdf' });
+  t.end();
+});
+
+tap.test('parsePowerType handles valid values', function(t) {
+  t.ok(util.parsePowerType('1').rage);
+  t.ok(util.parsePowerType(1).rage);
+  t.end();
+});
+
+tap.test('parsePowerType ignores invalid values', function(t) {
+  var result = util.parsePowerType(4);
+  t.notOk(result.mana);
+  t.notOk(result.rage);
+  t.notOk(result.focus);
+  t.notOk(result.energy);
+  t.notOk(result.runes);
+  t.notOk(result.runicPower);
+  t.notOk(result.holyPower);
+  t.equal(result.raw, 4);
+
+  var result2 = util.parsePowerType('4');
+  t.notOk(result2.mana);
+  t.notOk(result2.rage);
+  t.notOk(result2.focus);
+  t.notOk(result2.energy);
+  t.notOk(result2.runes);
+  t.notOk(result2.runicPower);
+  t.notOk(result2.holyPower);
+  t.equal(result2.raw, 4);
+  t.end();
+});

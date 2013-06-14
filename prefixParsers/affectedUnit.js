@@ -21,6 +21,8 @@
 
 module.exports = _affectedUnit;
 
+var util = require('../util');
+
 var validEvents = [
   'ENVIRONMENTAL_DAMAGE', 'RANGE_DAMAGE', 'SPELL_AURA_APPLIED',
   'SPELL_AURA_APPLIED_DOSE', 'SPELL_AURA_BROKEN_SPELL', 'SPELL_AURA_REFRESH',
@@ -36,7 +38,7 @@ function _affectedUnit(fields, offset) {
   this.affectedUnit = {
     id: fields[offset],
     healthAfter: parseInt(fields[1 + offset]),
-    powerType: parseInt(fields[4 + offset]),
+    powerType: util.parsePowerType(fields[4 + offset]),
     powerAfter: parseInt(fields[5 + offset])
   }
 
