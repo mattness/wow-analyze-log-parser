@@ -1,28 +1,3 @@
-SPELL_DISPEL
-=======================
-[0] Time Stamp/Event: 4/17 19:57:18.873  SPELL_DISPEL
-[1] Source Guid     : 0x070000000350D70C
-[2] Source Name     : "Valinea"
-[3] Source Flags    : 0x511
-[4] Source RFlags   : 0x0
-[5] Dest Guid       : 0x0700000004FFF0CF
-[6] Dest Name       : "Elemmentt"
-[7] Dest Flags      : 0x514
-[8] Dest Raid Flags : 0x0
-[9] Spell ID        : 136719
-[10] Spell Name     : "Blazing Sunlight"
-[11] Spell School   : 0x4
-[12] Affected Guid  : 0x0700000004FFF0CF
-[13] Health After   : 328423
-[14] Zone ID?       : 45668
-[15] ???            : 124
-[16] Power Type     : 3
-[17] Power After    : 18
-[18] ???            : 77130
-[19] ???            : "Purify Spirit"
-[20] ???            : 8
-[21] ???            : DEBUFF
-
 SPELL_ENERGIZE
 =======================
 [0] Time Stamp/Event: 4/17 19:37:24.335  SPELL_ENERGIZE
